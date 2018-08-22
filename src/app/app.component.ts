@@ -11,6 +11,17 @@ export class AppComponent {
   fixed: number;
   n: number;
 
+  ngOnInit() {
+    if (localStorage.getItem("initValue")) {
+      this.initValue = Number(localStorage.getItem("initValue"));
+      this.rate = Number(localStorage.getItem("rate"));
+      this.fixed = Number(localStorage.getItem("fixed"));
+      this.n = Number(localStorage.getItem("n"));
+    } else {
+      this.clear();
+    }
+  }
+
   calc(): number {
     if (
       isNaN(this.initValue) ||
@@ -58,5 +69,23 @@ export class AppComponent {
       returnNum.push(Math.floor(answer));
     }
     return returnNum;
+  }
+
+  save(): void {
+    localStorage.setItem("initValue", this.initValue.toString());
+    localStorage.setItem("rate", this.rate.toString());
+    localStorage.setItem("fixed", this.fixed.toString());
+    localStorage.setItem("n", this.n.toString());
+  }
+
+  clear(): void {
+    localStorage.setItem("initValue", "0");
+    localStorage.setItem("rate", "0");
+    localStorage.setItem("fixed", "0");
+    localStorage.setItem("n", "0");
+    this.initValue = 0;
+    this.rate = 0;
+    this.fixed = 0;
+    this.n = 0;
   }
 }

@@ -31,6 +31,18 @@
         <br> {{ calc() - calcfixed() | number}} 円
         <br>
       </p>
+
+      <p>
+        <button class="btn btn-warning btn-block myButton" (click)="clear()">clear
+
+        </button>
+      </p>
+
+      <p>
+        <button class="btn btn-sucess btn-block myButton" [disabled]="!(initValue && rate)" (click)="save()">save
+        </button>
+      </p>
+
       <!--details-->
       <table class="table table-bordered table-stripped">
         <tr *ngFor="let value of calcArray(); let i = index">

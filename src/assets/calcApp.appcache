@@ -1,0 +1,8 @@
+CACHE MANIFEST
+#var 1.0..0
+CACHE:
+../favicon.ico
+../runtime.js
+../polyfills.js
+../styles.js
+../main.js
