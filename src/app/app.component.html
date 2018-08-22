@@ -1,0 +1,43 @@
+<div class="panel panel-default myPanel mySmallPanel myText">
+  <!--panel-->
+  <div class="panel-heading text-center myPanelTitleBar">
+    福利計算
+  </div>
+  <!--body-->
+  <div class="panel-body">
+    <p>原本
+      <br>
+      <input type="tel" [(ngModel)]="initValue"> 円
+    </p>
+    <p>金利(年間)
+      <br>
+      <input type="tel" [(ngModel)]="rate"> %
+    </p>
+    <p>積立金(月額)
+      <br>
+      <input type="tel" [(ngModel)]="fixed"> 円
+    </p>
+    <p>
+      <input type="tel" [(ngModel)]="n">年後
+    </p>
+    <!--show if both box entered-->
+    <div *ngIf="initValue && rate && fixed && n">
+      <p class="alert alert-info myLargeText text-center">
+        {{n}}年後
+        <br>{{calc() | number}} 円
+        <br> 固定積立費用
+        <br> {{ calcfixed() | number}} 円
+        <br> 運用益
+        <br> {{ calc() - calcfixed() | number}} 円
+        <br>
+      </p>
+      <!--details-->
+      <table class="table table-bordered table-stripped">
+        <tr *ngFor="let value of calcArray(); let i = index">
+          <td>{{i+1}}年目</td>
+          <td>{{value | number}} 円</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
